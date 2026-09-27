@@ -1,17 +1,26 @@
-# slide_share_research_agent Flow
+# Slide Share Research Agent
 
-This project defines a declarative CrewAI Flow in `src/slide_share_research_agent/flow.yaml`.
+A CrewAI declarative Flow for multi-source academic document research.
 
-## Install
+The agent accepts a natural-language research request, generates search queries, searches four public sources, scrapes discovered pages, extracts document metadata, validates relevance, removes duplicates, maintains checkpoints, and produces structured research outputs.
 
-```bash
-crewai install
-```
+## What it does
 
-## Run
+The Flow follows this pipeline:
 
-```bash
-crewai run
-```
-
-Edit the declarative flow definition at `src/slide_share_research_agent/flow.yaml` to change the flow. Add reusable crews under `src/slide_share_research_agent/crews/`, custom Python tools under `src/slide_share_research_agent/tools/`, and shared knowledge files under `src/slide_share_research_agent/knowledge/`.
+```text
+Natural-language research request
+        ↓
+Research Command Interpreter
+        ↓
+Checkpoint Loader
+        ↓
+Multi-source Search & Scrape
+        ↓
+Metadata Extraction
+        ↓
+Relevance Validation
+        ↓
+Deduplication & Storage
+        ↓
+Summary Report
